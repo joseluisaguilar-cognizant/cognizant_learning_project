@@ -29,7 +29,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run lint`
 
-Launches the lint from command line.
+Launches the lint from command line.\
 **The boilerplate has been configured in order to be mandatory pass the lint without errors before the commit.**
 
 ### `npm build`
@@ -52,7 +52,7 @@ In order to have the code files properly formatted, the [Prettier](https://prett
 ### Husky and lint-staged
 
 [Husky](https://typicode.github.io/husky/#/)\
-[lint-staged](https://github.com/okonet/lint-staged)\
+[lint-staged](https://github.com/okonet/lint-staged)
 
 The boilerplate uses these packages to add a pre-commit hook in order to pass the lint and format the files.\
 `"*.{ts,tsx}": ["eslint", "prettier --write"]`
