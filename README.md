@@ -46,15 +46,15 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Prettier
 
-In order to have the code files properly formatted, the [Prettier](https://prettier.io) library has been added to the boilerplate.
+In order to have the code files properly formatted, the [Prettier](https://prettier.io) library has been added to the boilerplate.\
 **All the tsx & ts files will be properly formatted before the commit**
 
 ### Husky and lint-staged
 
-[Husky](https://typicode.github.io/husky/#/)
-[lint-staged](https://github.com/okonet/lint-staged)
+[Husky](https://typicode.github.io/husky/#/)\
+[lint-staged](https://github.com/okonet/lint-staged)\
 
-The boilerplate uses these packages to add a pre-commit hook in order to pass the lint and format the files.
+The boilerplate uses these packages to add a pre-commit hook in order to pass the lint and format the files.\
 `"*.{ts,tsx}": ["eslint", "prettier --write"]`
 
 ## Additional comments
