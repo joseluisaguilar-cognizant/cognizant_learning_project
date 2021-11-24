@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# React for Angular Devs boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The main idea behind this boilerplate is that Angular developers create forks of it and use for the code challenge or play.
+
+**Note: additional packages and scripts has been added in order to optimice the App**
+
+## Recommended Node version
+
+- [Node.js](https://nodejs.org/) v16.13.0 LTS
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**You will also see any lint errors in the console.**
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm run lint`
+
+Launches the lint from command line.
+**The boilerplate has been configured in order to be mandatory pass the lint without errors before the commit.**
+
+### `npm build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It correctly bundles React in production mode and optimices the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Additional packages and scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Prettier
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In order to have the code files properly formatted, the [Prettier](https://prettier.io) library has been added to the boilerplate.
+**All the tsx & ts files will be properly formatted before the commit**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Husky and lint-staged
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Husky](https://typicode.github.io/husky/#/)
+[lint-staged](https://github.com/okonet/lint-staged)
 
-## Learn More
+The boilerplate uses these packages to add a pre-commit hook in order to pass the lint and format the files.
+`"*.{ts,tsx}": ["eslint", "prettier --write"]`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Additional comments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We are using the lint config provide by [Create React App](https://github.com/facebook/create-react-app), no additional config or specific rules has been added.
