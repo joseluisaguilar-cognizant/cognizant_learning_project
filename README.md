@@ -32,6 +32,19 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Launches the lint from command line.\
 **The boilerplate has been configured in order to be mandatory pass the lint without errors before the commit.**
 
+### `npm run mock-server`
+
+Starts one mock server at [http://localhost:3001](http://localhost:3001) that uses db.json \
+Mock Server request examples:
+
+- Get all movies: GET [http://localhost:3001/movies](http://localhost:3001/movies)
+- Get one movie by id: GET [http://localhost:3001/movies/{id}](http://localhost:3001/movies/{id})
+- Add one movie to the array: POST [http://localhost:3001/movies](http://localhost:3001/movies)
+- Update one movie data: PUT [http://localhost:3001/movies/{id}](http://localhost:3001/movies/{id})
+- Delete one movie: DELETE [http://localhost:3001/movies/{id}](http://localhost:3001/movies/{id})
+
+You can find additional information in [Json Server](https://github.com/typicode/json-server)
+
 ### `npm build`
 
 Builds the app for production to the `build` folder.\
