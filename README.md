@@ -1,3 +1,11 @@
+# API call Challenge
+
+## Notes
+
+- Styling: using CSS in JS
+
+---
+
 # React for Angular Devs boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
