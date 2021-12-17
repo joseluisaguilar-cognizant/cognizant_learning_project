@@ -1,11 +1,32 @@
-import MoviesList from '../../components/MoviesList/MoviesList';
-import useFetchMovies from '../../hooks/useFetchMovies';
+import useMoviesAPI from '../../hooks/useMoviesAPI';
 
-import { MovieData } from '../../interfaces/MovieData';
 import { FunctionComponent } from 'react';
+import { MovieData } from '../../interfaces/MovieData';
+import Movie from '../../components/Movie/Movie';
 
 const MovieBillboard: FunctionComponent = () => {
-  const movies: MovieData[] = useFetchMovies();
+  const {
+    movieList: movies,
+    isLoading,
+    deleteMovie,
+    updateMovie
+  } = useMoviesAPI();
+
+  const deleteMovieHandler = (id: number): void => {
+    deleteMovie(id);
+  };
+
+  const updateMovieHandler = (id: number): void => {
+    updateMovie(id, { title: 'Data' });
+  };
+
+  if (isLoading) {
+    return (
+      <h2 style={{ fontSize: '2rem', textAlign: 'center', padding: '3rem' }}>
+        Loading data ...
+      </h2>
+    );
+  }
 
   return (
     <table style={{ width: '100%' }}>
@@ -26,10 +47,34 @@ const MovieBillboard: FunctionComponent = () => {
 
       <tbody className="billboard-table__body">
         {movies.length ? (
-          <MoviesList movies={movies} />
+          movies.map(
+            ({ id, title, episode_number, description }: MovieData) => {
+              return (
+                <tr key={id} style={{ borderBottom: '1px solid lightgreen' }}>
+                  <Movie
+                    id={id}
+                    title={title}
+                    episode={episode_number}
+                    description={description}
+                    deleteMovieHandler={deleteMovieHandler}
+                    updateMovieHandler={updateMovieHandler}
+                  />
+                </tr>
+              );
+            }
+          )
         ) : (
           <tr>
-            <th>Loading data ...</th>
+            <th
+              style={{
+                padding: '1rem',
+                fontSize: '1rem',
+                borderBottom: '1px solid red'
+              }}
+              colSpan={4}
+            >
+              NO MOVIES
+            </th>
           </tr>
         )}
       </tbody>
