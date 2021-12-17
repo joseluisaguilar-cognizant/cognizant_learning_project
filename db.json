@@ -36,7 +36,7 @@
     },
     {
       "id": 3,
-      "title": "Star Wars: Episode III - Revenge of the Sith",
+      "title": "Data",
       "episode_number": "3",
       "main_characters": [
         "Obi-Wan Kenobi",
@@ -92,6 +92,60 @@
     {
       "id": 6,
       "title": "Star Wars: Episode VI - Return of the Jedi",
+      "episode_number": "6",
+      "main_characters": [
+        "Luke Skywalker",
+        "Han Solo",
+        "Princess Leia Organa",
+        "Darth Vader",
+        "C-3P0",
+        "Chewbacca",
+        "The Emperor",
+        "Boba Fett"
+      ],
+      "description": "Darth Vader and the Empire are building a new, indestructible Death Star. Meanwhile, Han Solo has been imprisoned, and Luke Skywalker has sent R2-D2 and C-3PO to try and free him. Princess Leia - disguised as a bounty hunter - and Chewbacca go along as well. The final battle takes place on the moon of Endor, with its natural inhabitants, the Ewoks, lending a hand to the Rebels. Will Darth Vader and the Dark Side overcome the Rebels and take over the universe?",
+      "poster": "star_wars_episode_6_poster.png",
+      "hero_image": "star_wars_episode_6_hero.jpg"
+    },
+    {
+      "id": 7,
+      "title": "7Star Wars: Episode VI - Return of the Jedi",
+      "episode_number": "6",
+      "main_characters": [
+        "Luke Skywalker",
+        "Han Solo",
+        "Princess Leia Organa",
+        "Darth Vader",
+        "C-3P0",
+        "Chewbacca",
+        "The Emperor",
+        "Boba Fett"
+      ],
+      "description": "Darth Vader and the Empire are building a new, indestructible Death Star. Meanwhile, Han Solo has been imprisoned, and Luke Skywalker has sent R2-D2 and C-3PO to try and free him. Princess Leia - disguised as a bounty hunter - and Chewbacca go along as well. The final battle takes place on the moon of Endor, with its natural inhabitants, the Ewoks, lending a hand to the Rebels. Will Darth Vader and the Dark Side overcome the Rebels and take over the universe?",
+      "poster": "star_wars_episode_6_poster.png",
+      "hero_image": "star_wars_episode_6_hero.jpg"
+    },
+    {
+      "id": 8,
+      "title": "8Star Wars: Episode VI - Return of the Jedi",
+      "episode_number": "6",
+      "main_characters": [
+        "Luke Skywalker",
+        "Han Solo",
+        "Princess Leia Organa",
+        "Darth Vader",
+        "C-3P0",
+        "Chewbacca",
+        "The Emperor",
+        "Boba Fett"
+      ],
+      "description": "Darth Vader and the Empire are building a new, indestructible Death Star. Meanwhile, Han Solo has been imprisoned, and Luke Skywalker has sent R2-D2 and C-3PO to try and free him. Princess Leia - disguised as a bounty hunter - and Chewbacca go along as well. The final battle takes place on the moon of Endor, with its natural inhabitants, the Ewoks, lending a hand to the Rebels. Will Darth Vader and the Dark Side overcome the Rebels and take over the universe?",
+      "poster": "star_wars_episode_6_poster.png",
+      "hero_image": "star_wars_episode_6_hero.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Data",
       "episode_number": "6",
       "main_characters": [
         "Luke Skywalker",
