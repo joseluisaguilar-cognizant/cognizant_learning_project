@@ -13,7 +13,7 @@ export const generateRegexp: GenerateRegexp = {
     '^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()[\\]\\.,;:s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
   generateMaxMinLengthRegexp: (min, max) => {
     // ? Just to check if this function is called more than once (no)
-    console.log('regex');
+    console.log('%c Regexp ', 'background: #222; color: #bada55');
     return `^[a-zA-Z]{${String(min)},${String(max)}}$`;
   },
   generatePassRegexp: (min, max, specialCharacters) =>

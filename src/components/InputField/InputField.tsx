@@ -1,40 +1,60 @@
-import { FunctionComponent, ReactElement } from 'react';
-import { FaBeer } from 'react-icons/fa';
-import { useEffect } from 'react';
-import './InputField.css';
-import useInput from './hooks/useInput';
-import { IconType } from 'react-icons';
+import { useState, useEffect, FunctionComponent, ChangeEvent } from 'react';
 import { FaEdit } from 'react-icons/fa';
 
-interface IInputField {
-  name: string;
-  placeholder: string;
-  icon?: ReactElement<IconType>;
-  regex?: string;
-  shouldCheckInput: boolean;
-  errorMessage?: string;
-  handleChange: (value: string, isValid: boolean) => void;
+import {
+  UserInputField,
+  UserInputNames
+} from '../UserForm/UserForm.interfaces';
+// import useInput from './hooks/useInput';
+
+import './InputField.css';
+
+interface IInputField extends UserInputField {
+  defaultValue?: string;
+  shouldCheckRegexp?: boolean;
+  handleChange: (name: UserInputNames, value: string, isValid: boolean) => void;
 }
+
+const validateInput = (input: string, regex: string): boolean =>
+  new RegExp(regex).test(input);
 
 const InputField: FunctionComponent<IInputField> = ({
   name,
   placeholder,
   regex,
-  icon,
+  icon = <FaEdit />,
   errorMessage,
-  shouldCheckInput,
+  defaultValue = '',
+  shouldCheckRegexp = true,
   handleChange
 }) => {
-  const { value, isValid, handleInputChange } = useInput(regex);
+  // const { value, isValid, handleInputChange } = useInput(defaultValue, regex);
+  const [value, setValue] = useState<string>(defaultValue);
+  const [isValidInput, setIsValidInput] = useState<boolean>(false);
 
   useEffect(() => {
-    handleChange(value, isValid);
-  }, [handleChange, value, isValid]);
+    console.log('INPUTFIELD: useEffect ');
+
+    handleChange(name, value, isValidInput);
+  }, [handleChange, name, value, isValidInput]);
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    console.log('INPUTFIELD: handleInputChange');
+
+    const {
+      target: { value }
+    } = event;
+    setValue(value);
+
+    if (regex) {
+      setIsValidInput(validateInput(value, regex));
+    }
+  };
 
   return (
     <>
       <label htmlFor={name} className="input-field">
-        <i className="input-field__icon">{icon ? icon : <FaEdit />}</i>
+        <i className="input-field__icon">{icon}</i>
         <input
           name={name}
           id={name}
@@ -44,7 +64,7 @@ const InputField: FunctionComponent<IInputField> = ({
           onChange={handleInputChange}
         />
       </label>
-      {!isValid && errorMessage && shouldCheckInput ? (
+      {!isValidInput && errorMessage && shouldCheckRegexp ? (
         <span style={{ color: 'red' }}>{errorMessage}</span>
       ) : null}
     </>

@@ -12,6 +12,13 @@
   border-bottom: 1px solid var(--dark-gray);
 }
 
+.userForm__input-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--dark-gray);
+  padding: 0.5rem 0;
+}
+
 .userForm__checkBox {
   border-bottom: 1px solid var(--dark-gray);
   padding: 0.5rem 0;

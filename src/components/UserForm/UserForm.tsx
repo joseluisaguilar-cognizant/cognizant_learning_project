@@ -1,26 +1,73 @@
-// import Button from '../Button/Button';
-import { FormEvent } from 'react';
-import { FaEnvelope, FaUser, FaPassport } from 'react-icons/fa';
+import {
+  useState,
+  useCallback,
+  FormEvent,
+  ChangeEvent,
+  FunctionComponent
+} from 'react';
 
-import { generateRegexp } from '../../shared/constants/generateRegexp';
-
-import { useState } from 'react';
 import InputField from '../InputField/InputField';
+
+import {
+  generateInitialUserFormDataValue,
+  USER_FORM_INPUTS
+} from './data/UserForm.data';
+import { UserFormData, UserInputField } from './UserForm.interfaces';
+
 import './UserForm.css';
 
-const UserForm = () => {
-  const [canSubmit, setCanSubmit] = useState(false);
-  const [shouldCheckForm, setShouldCheckForm] = useState(false);
+const initUserFormData: UserFormData = {
+  ...generateInitialUserFormDataValue(),
+  policyAgree: { value: false, isValid: false }
+};
 
-  const handleSubmit = (e: FormEvent) => {
-    console.log('easas');
+const UserForm: FunctionComponent = () => {
+  const [shouldCheckValidations, setShouldCheckValidations] =
+    useState<boolean>(false);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] =
+    useState<boolean>(true);
+  const [userFormData, setUserFormData] =
+    useState<UserFormData>(initUserFormData);
+
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
-    setShouldCheckForm(true);
-    console.log(e);
+    setShouldCheckValidations(true);
+
+    const isValidForm =
+      USER_FORM_INPUTS.every(
+        (val: UserInputField) => userFormData[val.name].isValid
+      ) && userFormData.policyAgree.isValid;
+
+    if (isValidForm) {
+      alert(JSON.stringify(userFormData));
+
+      setIsSubmitButtonDisabled(true);
+      setShouldCheckValidations(false);
+    }
   };
 
-  const onHandleInputChange = (value: string, isValid: boolean) => {
-    console.log('hey', value, isValid);
+  const handleInputChange = useCallback(
+    (name: string, value: string, isValid: boolean): void => {
+      console.log('USERFORM: handleInputChange ');
+
+      setUserFormData((prevValue: UserFormData) => ({
+        ...prevValue,
+        [name]: { value, isValid }
+      }));
+    },
+    []
+  );
+
+  const handleCheckBoxChange = ({
+    target: { checked }
+  }: ChangeEvent<HTMLInputElement>): void => {
+    console.log('USERFORM: handleCheckBoxChange ');
+    setUserFormData((prevValue: UserFormData) => ({
+      ...prevValue,
+      policyAgree: { value: checked, isValid: checked }
+    }));
+
+    setIsSubmitButtonDisabled(!checked);
   };
 
   return (
@@ -28,57 +75,50 @@ const UserForm = () => {
       <h3 className="userForm__title">Registration</h3>
 
       <form onSubmit={handleSubmit}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            borderBottom: '1px solid var(--dark-gray)',
-            padding: '0.5rem 0'
-          }}
-        >
-          <InputField
-            name="email"
-            placeholder="Email"
-            errorMessage="Debe introducir un email correcto"
-            icon={<FaEnvelope />}
-            regex={generateRegexp.email}
-            shouldCheckInput={shouldCheckForm}
-            handleChange={onHandleInputChange}
-          />
-          <InputField
-            name="name"
-            placeholder="Name"
-            errorMessage="Debe introducir un nombre"
-            icon={<FaUser />}
-            regex={generateRegexp.generateMaxMinLengthRegexp(3, 16)}
-            shouldCheckInput={shouldCheckForm}
-            handleChange={onHandleInputChange}
-          />
-          <InputField
-            name="password"
-            placeholder="Password"
-            errorMessage="El password no es adecuado"
-            icon={<FaPassport />}
-            regex={generateRegexp.generatePassRegexp(8, 12, '@!$&%-_')}
-            shouldCheckInput={shouldCheckForm}
-            handleChange={onHandleInputChange}
-          />
+        <div className="userForm__input-container">
+          {USER_FORM_INPUTS.map(
+            ({
+              name,
+              placeholder,
+              errorMessage,
+              icon,
+              regex
+            }: UserInputField) => {
+              return (
+                <InputField
+                  key={name}
+                  name={name}
+                  placeholder={placeholder}
+                  errorMessage={errorMessage}
+                  icon={icon}
+                  regex={regex}
+                  shouldCheckRegexp={shouldCheckValidations}
+                  handleChange={handleInputChange}
+                />
+              );
+            }
+          )}
         </div>
         <div className="userForm__checkBox">
           <label htmlFor="policyAgree">
-            <input type="checkbox" name="policyAgree" id="policyAgree" />I agree
-            to Privacy Policy
+            <input
+              type="checkbox"
+              name="policyAgree"
+              id="policyAgree"
+              checked={userFormData.policyAgree.value}
+              onChange={handleCheckBoxChange}
+            />
+            I agree to Privacy Policy
           </label>
         </div>
         <div className="userForm__button-container">
           <button
             type="submit"
-            disabled={!canSubmit}
+            disabled={isSubmitButtonDisabled}
             className="userForm__button"
           >
             Submit
           </button>
-          {/* <Button /> */}
         </div>
       </form>
     </aside>
