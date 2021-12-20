@@ -40,9 +40,6 @@ const UserForm: FunctionComponent = () => {
 
     if (isValidForm) {
       alert(JSON.stringify(userFormData));
-
-      setIsSubmitButtonDisabled(true);
-      setShouldCheckValidations(false);
     }
   };
 
