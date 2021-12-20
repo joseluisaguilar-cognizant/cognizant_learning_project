@@ -1,11 +1,15 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactElement } from 'react';
+import { FaBeer } from 'react-icons/fa';
 import { useEffect } from 'react';
+import './InputField.css';
 import useInput from './hooks/useInput';
+import { IconType } from 'react-icons';
+import { FaEdit } from 'react-icons/fa';
 
 interface IInputField {
   name: string;
   placeholder: string;
-  icon?: string;
+  icon?: ReactElement<IconType>;
   regex?: string;
   shouldCheckInput: boolean;
   errorMessage?: string;
@@ -16,6 +20,7 @@ const InputField: FunctionComponent<IInputField> = ({
   name,
   placeholder,
   regex,
+  icon,
   errorMessage,
   shouldCheckInput,
   handleChange
@@ -28,15 +33,15 @@ const InputField: FunctionComponent<IInputField> = ({
 
   return (
     <>
-      <label htmlFor={name} style={{ padding: '0.4rem 0' }}>
-        <span>C</span>
+      <label htmlFor={name} className="input-field">
+        <i className="input-field__icon">{icon ? icon : <FaEdit />}</i>
         <input
           name={name}
           id={name}
           value={value}
           placeholder={placeholder}
+          className="input-field__input"
           onChange={handleInputChange}
-          style={{ border: '1px solid var(--dark-gray)' }}
         />
       </label>
       {!isValid && errorMessage && shouldCheckInput ? (

@@ -1,0 +1,44 @@
+.userForm {
+  padding: 1.5rem;
+  background: #ebebeb;
+  border-radius: 0.2rem;
+  box-shadow: 2px 2px 5px grey;
+}
+
+.userForm__title {
+  text-align: center;
+  font-size: 2rem;
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.userForm__checkBox {
+  border-bottom: 1px solid var(--dark-gray);
+  padding: 0.5rem 0;
+}
+
+.userForm__checkBox label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.userForm__button-container {
+  padding: 1rem 0;
+}
+
+.userForm__button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.userForm__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,9 +1,15 @@
 // import Button from '../Button/Button';
-import { ChangeEvent, FormEvent } from 'react';
+import { FormEvent } from 'react';
+import { FaEnvelope, FaUser, FaPassport } from 'react-icons/fa';
+
+import { generateRegexp } from '../../shared/constants/generateRegexp';
+
 import { useState } from 'react';
 import InputField from '../InputField/InputField';
+import './UserForm.css';
 
 const UserForm = () => {
+  const [canSubmit, setCanSubmit] = useState(false);
   const [shouldCheckForm, setShouldCheckForm] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
@@ -17,20 +23,9 @@ const UserForm = () => {
     console.log('hey', value, isValid);
   };
 
-  // TODO: Devuelve las regex mediante una funcion
-
   return (
-    <aside style={userFormContainerStlying}>
-      <h3
-        style={{
-          textAlign: 'center',
-          fontSize: '1.5rem',
-          padding: '0 0 1.5rem',
-          borderBottom: '1px solid var(--dark-gray)'
-        }}
-      >
-        Registration
-      </h3>
+    <aside className="userForm">
+      <h3 className="userForm__title">Registration</h3>
 
       <form onSubmit={handleSubmit}>
         <div
@@ -45,7 +40,8 @@ const UserForm = () => {
             name="email"
             placeholder="Email"
             errorMessage="Debe introducir un email correcto"
-            regex='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+            icon={<FaEnvelope />}
+            regex={generateRegexp.email}
             shouldCheckInput={shouldCheckForm}
             handleChange={onHandleInputChange}
           />
@@ -53,7 +49,8 @@ const UserForm = () => {
             name="name"
             placeholder="Name"
             errorMessage="Debe introducir un nombre"
-            regex="^[a-zA-Z]{3,16}$"
+            icon={<FaUser />}
+            regex={generateRegexp.generateMaxMinLengthRegexp(3, 16)}
             shouldCheckInput={shouldCheckForm}
             handleChange={onHandleInputChange}
           />
@@ -61,28 +58,24 @@ const UserForm = () => {
             name="password"
             placeholder="Password"
             errorMessage="El password no es adecuado"
-            regex="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!$&%\-_]).{8,12}$"
+            icon={<FaPassport />}
+            regex={generateRegexp.generatePassRegexp(8, 12, '@!$&%-_')}
             shouldCheckInput={shouldCheckForm}
             handleChange={onHandleInputChange}
           />
         </div>
-        <div
-          style={{
-            borderBottom: '1px solid var(--dark-gray)',
-            padding: '0.5rem 0'
-          }}
-        >
-          <label
-            htmlFor="policyAgree"
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-          >
-            {' '}
+        <div className="userForm__checkBox">
+          <label htmlFor="policyAgree">
             <input type="checkbox" name="policyAgree" id="policyAgree" />I agree
             to Privacy Policy
           </label>
         </div>
-        <div style={{ padding: '1rem 0' }}>
-          <button type="submit" style={submitButtonStyling}>
+        <div className="userForm__button-container">
+          <button
+            type="submit"
+            disabled={!canSubmit}
+            className="userForm__button"
+          >
             Submit
           </button>
           {/* <Button /> */}
@@ -90,24 +83,6 @@ const UserForm = () => {
       </form>
     </aside>
   );
-};
-
-const userFormContainerStlying = {
-  padding: '1.5rem',
-  background: '#EBEBEB',
-  borderRadius: '0.2rem',
-  boxShadow: '2px 2px 5px grey'
-};
-
-const submitButtonStyling = {
-  background: 'var(--blue)',
-  color: 'white',
-  border: 'none',
-  borderRadius: '0.5rem',
-  width: '100%',
-  padding: '0.7rem',
-  fontSize: '1rem',
-  cursor: 'pointer'
 };
 
 export default UserForm;
