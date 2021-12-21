@@ -3,32 +3,33 @@ import { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Task } from '../../interfaces/task.interface';
+import { enableEditMode } from '../../redux/handleEditMode/handleEditMode.actions';
 import RootStore from '../../redux/interfaces/store.interface';
 import {
-  createNewTask,
+  deleteTask,
   toggleImportance,
   toggleStatus
 } from '../../redux/todo/todo.actions';
-import { TodoActionTypes } from '../../redux/todo/todo.types';
 import TaskElement from './TaskElement/TaskElement';
 
 const TasksList: FunctionComponent = () => {
   const tasks: Task[] = useSelector((state: RootStore) => state.todo);
   const dispatch = useDispatch();
 
-  const handleImportance = (id: number) => {
+  const handleImportance = (id: string) => {
     dispatch(toggleImportance(id));
   };
 
-  const editTask = () => {
-    console.log('edit');
+  const handleEditTask = (task: Task) => {
+    console.log('edit', task);
+    dispatch(enableEditMode(task));
   };
 
-  const deleteTask = () => {
-    console.log('delete');
+  const handleDeleteTask = (id: string) => {
+    dispatch(deleteTask(id));
   };
 
-  const handleStatus = (id: number) => {
+  const handleStatus = (id: string) => {
     dispatch(toggleStatus(id));
   };
 
@@ -40,8 +41,8 @@ const TasksList: FunctionComponent = () => {
         <TaskElement
           key={task.id}
           {...task}
-          onDelete={deleteTask}
-          onEdit={editTask}
+          onDelete={handleDeleteTask}
+          onEdit={handleEditTask}
           onToggleImportance={handleImportance}
           onToggleStatus={handleStatus}
         />

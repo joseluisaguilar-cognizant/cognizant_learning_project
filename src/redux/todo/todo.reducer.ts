@@ -48,6 +48,13 @@ const todoReducer = (state: Task[] = INITIAL_STATE, action: TodoAction) => {
           ? { ...task, isActive: !task.isActive }
           : task
       );
+
+    case TodoActionTypes.EDIT_TASK:
+      console.log('edit', action.payload);
+      return state.map((task: Task) => {
+        return task.id === action.payload.id ? action.payload : task;
+      });
+    // return state;
     default:
       return state;
   }

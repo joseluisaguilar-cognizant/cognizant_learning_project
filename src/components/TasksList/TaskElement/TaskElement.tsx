@@ -1,18 +1,19 @@
 import { FunctionComponent } from 'react';
 
 import { FaEraser, FaExclamation, FaEdit, FaCheck } from 'react-icons/fa';
+import { Task } from '../../../interfaces/task.interface';
 
 import './TaskElement.css';
 
 interface ITaskElement {
-  id: number;
+  id: string;
   text: string;
   isActive: boolean;
   isImportant?: boolean;
-  onToggleImportance: (id: number) => void;
-  onEdit: () => void;
-  onDelete: () => void;
-  onToggleStatus: (id: number) => void;
+  onToggleImportance: (id: string) => void;
+  onEdit: (task: Task) => void;
+  onDelete: (id: string) => void;
+  onToggleStatus: (id: string) => void;
 }
 
 const TaskElement: FunctionComponent<ITaskElement> = ({
@@ -52,13 +53,13 @@ const TaskElement: FunctionComponent<ITaskElement> = ({
           <FaEdit
             className="taskElement__icon taskElement__icon--edit"
             title="Edit Task"
-            onClick={onEdit}
+            onClick={() => onEdit({ id, text, isActive, isImportant })}
           />
         )}
         <FaEraser
           className="taskElement__icon taskElement__icon--remove"
           title="Remove task"
-          onClick={onDelete}
+          onClick={() => onDelete(id)}
         />
       </div>
     </div>

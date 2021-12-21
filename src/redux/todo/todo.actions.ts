@@ -20,3 +20,8 @@ export const toggleImportance = (taskId: string) => ({
   type: TodoActionTypes.TOGGLE_IMPORTANCE,
   payload: taskId
 });
+
+export const editTask = (task: Task) => ({
+  type: TodoActionTypes.EDIT_TASK,
+  payload: task
+});

@@ -41,11 +41,28 @@ body {
   width: 100%;
 }
 
+.title {
+  display: block;
+  font-weight: bold;
+}
+
+.title--primary {
+  font-size: 2rem;
+}
+
+.title--secondary {
+  font-size: 1.5rem;
+}
+
 .form {
   box-shadow: inset 1px 1px 5px gray;
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   padding: 0.5rem 1rem;
+}
+
+.form--edit {
+  background-color: rgb(224, 230, 173);
 }
 
 .form-control {
@@ -55,6 +72,7 @@ body {
 
 .form-control label {
   display: block;
+  font-weight: bold;
 }
 
 .form-control input {
@@ -76,6 +94,7 @@ body {
 
 .form-control__checkbox label {
   flex: 1;
+  font-weight: bold;
 }
 
 .form-control__checkbox input {
