@@ -45,7 +45,7 @@ const Todo: FunctionComponent = () => {
         <HandleTask />
       </section>
       <section>
-        <TasksList mockTasks={mockTasks} />
+        <TasksList />
       </section>
     </aside>
   );

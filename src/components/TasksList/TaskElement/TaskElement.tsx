@@ -5,16 +5,18 @@ import { FaEraser, FaExclamation, FaEdit, FaCheck } from 'react-icons/fa';
 import './TaskElement.css';
 
 interface ITaskElement {
+  id: number;
   text: string;
   isActive: boolean;
   isImportant?: boolean;
-  onToggleImportance: () => void;
+  onToggleImportance: (id: number) => void;
   onEdit: () => void;
   onDelete: () => void;
-  onToggleStatus: () => void;
+  onToggleStatus: (id: number) => void;
 }
 
 const TaskElement: FunctionComponent<ITaskElement> = ({
+  id,
   text,
   isActive = true,
   isImportant = false,
@@ -34,14 +36,14 @@ const TaskElement: FunctionComponent<ITaskElement> = ({
           <FaExclamation
             className="taskElement__icon taskElement__icon--importance"
             title="Change importance"
-            onClick={onToggleImportance}
+            onClick={() => onToggleImportance(id)}
           />
         )}
 
         <FaCheck
           className="taskElement__icon"
           title="Change status"
-          onClick={onToggleStatus}
+          onClick={() => onToggleStatus(id)}
         />
       </div>
       <h3 className="taskElement__title">{text}</h3>

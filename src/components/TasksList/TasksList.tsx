@@ -1,15 +1,23 @@
 import { FunctionComponent } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Task } from '../../interfaces/task.interface';
+import RootStore from '../../redux/interfaces/store.interface';
+import {
+  createNewTask,
+  toggleImportance,
+  toggleStatus
+} from '../../redux/todo/todo.actions';
+import { TodoActionTypes } from '../../redux/todo/todo.types';
 import TaskElement from './TaskElement/TaskElement';
 
-interface ITasksList {
-  mockTasks: Task[];
-}
+const TasksList: FunctionComponent = () => {
+  const tasks: Task[] = useSelector((state: RootStore) => state.todo);
+  const dispatch = useDispatch();
 
-const TasksList: FunctionComponent<ITasksList> = ({ mockTasks }) => {
-  const handleImportance = () => {
-    console.log('importance');
+  const handleImportance = (id: number) => {
+    dispatch(toggleImportance(id));
   };
 
   const editTask = () => {
@@ -20,20 +28,18 @@ const TasksList: FunctionComponent<ITasksList> = ({ mockTasks }) => {
     console.log('delete');
   };
 
-  const handleStatus = () => {
-    console.log('status');
+  const handleStatus = (id: number) => {
+    dispatch(toggleStatus(id));
   };
 
   return (
     <div
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      {mockTasks.map((task) => (
+      {tasks.map((task: Task) => (
         <TaskElement
           key={task.id}
-          text={task.text}
-          isActive={task.isActive}
-          isImportant={task.isImportant}
+          {...task}
           onDelete={deleteTask}
           onEdit={editTask}
           onToggleImportance={handleImportance}
