@@ -21,7 +21,6 @@ const TasksList: FunctionComponent = () => {
   };
 
   const handleEditTask = (task: Task) => {
-    console.log('edit', task);
     dispatch(enableEditMode(task));
   };
 

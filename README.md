@@ -1,3 +1,11 @@
+# Jose Luis Aguilar -- Todo List
+
+![Todo list 1](./src/assets/TodoList1.png)
+
+![Todo list 2](./src/assets/TodoList2.png)
+
+---
+
 # React for Angular Devs boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

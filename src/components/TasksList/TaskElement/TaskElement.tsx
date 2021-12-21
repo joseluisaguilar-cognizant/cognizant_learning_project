@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 
-import { FaEraser, FaExclamation, FaEdit, FaCheck } from 'react-icons/fa';
+import { FaEraser, FaExclamation, FaEdit, FaExchangeAlt } from 'react-icons/fa';
 import { Task } from '../../../interfaces/task.interface';
 
 import './TaskElement.css';
@@ -35,13 +35,17 @@ const TaskElement: FunctionComponent<ITaskElement> = ({
       <div className="taskElement__buttons">
         {isActive && (
           <FaExclamation
-            className="taskElement__icon taskElement__icon--importance"
+            className={`taskElement__icon ${
+              isImportant
+                ? ' taskElement__icon--enabled'
+                : 'taskElement__icon--disabled'
+            }`}
             title="Change importance"
             onClick={() => onToggleImportance(id)}
           />
         )}
 
-        <FaCheck
+        <FaExchangeAlt
           className="taskElement__icon"
           title="Change status"
           onClick={() => onToggleStatus(id)}
@@ -51,13 +55,13 @@ const TaskElement: FunctionComponent<ITaskElement> = ({
       <div className="taskElement__buttons">
         {isActive && (
           <FaEdit
-            className="taskElement__icon taskElement__icon--edit"
+            className="taskElement__icon"
             title="Edit Task"
             onClick={() => onEdit({ id, text, isActive, isImportant })}
           />
         )}
         <FaEraser
-          className="taskElement__icon taskElement__icon--remove"
+          className="taskElement__icon"
           title="Remove task"
           onClick={() => onDelete(id)}
         />
