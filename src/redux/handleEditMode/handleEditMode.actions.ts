@@ -1,11 +1,12 @@
 import { Task } from '../../interfaces/task.interface';
-import HandleEditModeTypes from './handleEditMode.types.';
+import { HandleEditModeAction } from '../interfaces/action.interface';
+import HandleEditModeActionTypes from './handleEditMode.types.';
 
-export const enableEditMode = (task: Task) => ({
-  type: HandleEditModeTypes.ENABLE_EDIT_MODE,
+export const enableEditMode = (task: Task): HandleEditModeAction => ({
+  type: HandleEditModeActionTypes.ENABLE_EDIT_MODE,
   payload: task
 });
 
-export const disableEditMode = () => ({
-  type: HandleEditModeTypes.DISABLE_EDIT_MODE
+export const disableEditMode = (): HandleEditModeAction => ({
+  type: HandleEditModeActionTypes.DISABLE_EDIT_MODE
 });

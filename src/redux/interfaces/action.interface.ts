@@ -1,8 +1,12 @@
-import { TodoActionTypes } from '../todo/todo.types';
+import HandleEditModeActionTypes from '../handleEditMode/handleEditMode.types.';
+import TodoActionTypes from '../todo/todo.types';
 
-interface TodoAction {
+export interface TodoAction {
   type: TodoActionTypes;
-  payload: any;
+  payload?: any;
 }
 
-export default TodoAction;
+export interface HandleEditModeAction {
+  type: HandleEditModeActionTypes;
+  payload?: any;
+}

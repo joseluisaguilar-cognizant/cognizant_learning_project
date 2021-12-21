@@ -1,6 +1,6 @@
 import { Task } from '../../interfaces/task.interface';
 import TodoAction from '../interfaces/action.interface';
-import { TodoActionTypes } from './todo.types';
+import TodoActionTypes from './todo.types';
 
 const INITIAL_STATE: Task[] = [
   {

@@ -24,7 +24,6 @@ const Todo: FunctionComponent = () => {
           <HandleTask />
         </section>
       ) : null}
-
       <section>
         <TasksList />
       </section>

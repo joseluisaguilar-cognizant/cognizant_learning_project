@@ -2,7 +2,10 @@ import { FunctionComponent } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import TaskElement from './TaskElement/TaskElement';
+
 import { Task } from '../../interfaces/task.interface';
+
 import { enableEditMode } from '../../redux/handleEditMode/handleEditMode.actions';
 import RootStore from '../../redux/interfaces/store.interface';
 import {
@@ -10,7 +13,6 @@ import {
   toggleImportance,
   toggleStatus
 } from '../../redux/todo/todo.actions';
-import TaskElement from './TaskElement/TaskElement';
 
 const TasksList: FunctionComponent = () => {
   const tasks: Task[] = useSelector((state: RootStore) => state.todo);

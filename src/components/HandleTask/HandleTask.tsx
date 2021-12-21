@@ -22,9 +22,7 @@ const initTask: Task = {
   text: ''
 };
 
-const createNewUniqTask = (newId: string): Task => {
-  return { ...initTask, id: newId };
-};
+const createNewUniqTask = (newId: string): Task => ({ ...initTask, id: newId });
 
 const HandleTask: FunctionComponent = () => {
   const [newTask, setNewTask] = useState<Task>(initTask);
@@ -55,9 +53,9 @@ const HandleTask: FunctionComponent = () => {
       return;
     }
 
-    resetForm();
-
     dispatch(createNewTask(newTask));
+
+    resetForm();
   };
 
   const resetForm = (): void => {
@@ -66,30 +64,19 @@ const HandleTask: FunctionComponent = () => {
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const {
-      target: { name, value }
+      target: { name, value, checked, type }
     } = event;
 
-    setNewTask((prevState: Task) => {
-      return {
-        ...prevState,
-        [name]: value
-      };
-    });
+    type === 'text'
+      ? updateTaskValue(name, value)
+      : updateTaskValue(name, checked);
   };
 
-  const handleCheckbox = (event: ChangeEvent<HTMLInputElement>): void => {
-    const {
-      target: { name, checked, value }
-    } = event;
-
-    console.log(value);
-
-    setNewTask((prevState: Task) => {
-      return {
-        ...prevState,
-        [name]: checked
-      };
-    });
+  const updateTaskValue = (name: string, value: string | boolean): void => {
+    setNewTask((prevState: Task) => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
@@ -105,6 +92,7 @@ const HandleTask: FunctionComponent = () => {
             id="text"
             name="text"
             placeholder="Write down your task"
+            autoComplete="off"
             value={newTask.text}
             onChange={handleInput}
           />
@@ -116,7 +104,7 @@ const HandleTask: FunctionComponent = () => {
             name="isImportant"
             checked={newTask.isImportant}
             id="isImportant"
-            onChange={handleCheckbox}
+            onChange={handleInput}
           />
         </div>
         <button type="submit" className="btn btn__submit">

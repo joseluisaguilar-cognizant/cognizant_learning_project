@@ -1,7 +1,9 @@
-export enum TodoActionTypes {
+enum TodoActionTypes {
   CREATE_NEW_TASK = 'CREATE_NEW_TASK',
   REMOVE_TASK = 'REMOVE_TASK',
   TOGGLE_IMPORTANCE = 'TOGGLE_IMPORTANCE',
   TOGGLE_STATUS = 'TOGGLE_STATUS',
   EDIT_TASK = 'EDIT_TASK'
 }
+
+export default TodoActionTypes;
