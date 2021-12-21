@@ -10,26 +10,26 @@ import './Todo.css';
 const mockTasks: Task[] = [
   {
     id: 1,
-    important: true,
-    active: true,
+    isImportant: true,
+    isActive: true,
     text: 'Do something'
   },
   {
     id: 2,
-    important: true,
-    active: false,
+    isImportant: true,
+    isActive: false,
     text: 'Do something more'
   },
   {
     id: 3,
-    important: false,
-    active: false,
+    isImportant: false,
+    isActive: false,
     text: 'Do another thing'
   },
   {
     id: 4,
-    important: false,
-    active: true,
+    isImportant: false,
+    isActive: true,
     text: 'Rest'
   }
 ];

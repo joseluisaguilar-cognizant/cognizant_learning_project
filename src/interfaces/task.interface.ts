@@ -1,6 +1,6 @@
 export interface Task {
   id: number;
   text: string;
-  active: boolean;
-  important: boolean;
+  isActive: boolean;
+  isImportant: boolean;
 }

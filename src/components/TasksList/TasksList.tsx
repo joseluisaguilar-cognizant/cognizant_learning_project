@@ -32,6 +32,8 @@ const TasksList: FunctionComponent<ITasksList> = ({ mockTasks }) => {
         <TaskElement
           key={task.id}
           text={task.text}
+          isActive={task.isActive}
+          isImportant={task.isImportant}
           onDelete={deleteTask}
           onEdit={editTask}
           onToggleImportance={handleImportance}
