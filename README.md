@@ -1,3 +1,9 @@
+# useCallback and useMemo example exercise
+
+![Screenshot](./src/assets/Screenshot1.png)
+
+---
+
 # React for Angular Devs boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
