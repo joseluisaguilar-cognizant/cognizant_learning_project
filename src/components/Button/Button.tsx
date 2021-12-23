@@ -21,6 +21,8 @@ const Button: FunctionComponent<IButton> = ({
     <button
       style={{ ...buttonStyling, ...buttonType[type] }}
       onClick={clickHandler}
+      data-testid="botoncito"
+      data-something="funny"
     >
       {text.toUpperCase()}
     </button>

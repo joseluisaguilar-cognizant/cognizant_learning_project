@@ -5,6 +5,7 @@
 ## Notes
 
 - Styling: using CSS in JS
+- [react-hooks-testing-library](https://github.com/testing-library/react-hooks-testing-library)
 
 ---
 
