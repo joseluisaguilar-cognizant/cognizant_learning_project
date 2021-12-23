@@ -1,5 +1,7 @@
 # API call Challenge
 
+![API Screenshot](./src/assets/StarWarsAPIScreenshot1.png)
+
 ## Notes
 
 - Styling: using CSS in JS
